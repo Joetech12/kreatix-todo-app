@@ -16,24 +16,27 @@ import Todo from './components/Todo';
 // button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
 
 const style = {
-  bg: `h-screen w-screen p-4 bg-[#707070] to-[#1CB5E0]`,
-  container: `bg-slate-100 max-w-[500px] w-full m-auto rounded-lg shadow-xl p-4`,
+  bg: `h-screen w-screen  bg-[#707070] to-[#1CB5E0] flex `,
+  container: `bg-slate-100 max-w-[500px] w-full m-auto rounded-lg shadow-xl p-4 max-h-screen flex flex-col mb-[2rem]`,
+  container2: `flex-1`,
+  container3: `flex-2 overflow-auto mt-[20px]`,
   heading: `text-3xl font-bold text-center text-gray-800 p-2`,
   form: `flex justify-between`,
-  input: `border p-2 w-full text-xl hover:border-red-300 hover:border-[1px] focus:ring focus:ring-red-300 outline-none rounded-lg`,
+  input: `border p-2 w-full text-xl hover:border-red-300 hover:border-[1px] focus:ring focus:ring-red-300 focus:ring-[2px] outline-none rounded-lg`,
   button: `border p-4 ml-2 bg-[#db6345] hover:bg-[#ba4021] text-slate-100 rounded-lg duration-300`,
-  count: `text-center p-2`,
+  count: `text-center p-2 font-semibold`,
 };
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
+  const [showError, setShowError] = useState(false);
 
   // Create todo
   const createTodo = async (e) => {
     e.preventDefault(e);
     if (input === '') {
-      alert('Please enter a todo');
+      setShowError(true);
       return;
     }
     await addDoc(collection(db, 'todos'), {
@@ -63,9 +66,7 @@ function App() {
     });
   };
 
-
-//   Edit todo in firebase
-
+  //   Edit todo in firebase
 
   // Delete todo
   const deleteTodo = async (id) => {
@@ -75,31 +76,43 @@ function App() {
   return (
     <div className={style.bg}>
       <div className={style.container}>
-        <h3 className={style.heading}>Kreatix Todo App</h3>
-        <form onSubmit={createTodo} className={style.form}>
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className={style.input}
-            type="text"
-            placeholder="Add Todo"
-          />
-          <button className={style.button}>
-            <AiOutlinePlus size={30} />
-          </button>
-        </form>
-        <ul>
-          {todos.map((todo, index) => (
-            <Todo
-              key={index}
-              todo={todo}
-              toggleComplete={toggleComplete}
-              deleteTodo={deleteTodo}
+        <div className={style.container2}>
+          <h3 className={style.heading}>Kreatix Todo App</h3>
+          <form onSubmit={createTodo} className={style.form}>
+            <input
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setShowError(false);
+              }}
+              className={style.input}
+              type="text"
+              placeholder="Add Todo"
             />
-          ))}
-        </ul>
+            <button className={style.button}>
+              <AiOutlinePlus size={30} />
+            </button>
+          </form>
+          {showError && (
+            <div className="flex justify-center bg-red-100 py-4 my-2">
+              <p className="">Please enter a Todo detail</p>
+            </div>
+          )}
+        </div>
+        <div className={style.container3}>
+          <ul>
+            {todos.map((todo, index) => (
+              <Todo
+                key={index}
+                todo={todo}
+                toggleComplete={toggleComplete}
+                deleteTodo={deleteTodo}
+              />
+            ))}
+          </ul>
+        </div>
         {todos.length < 1 ? null : (
-          <p className={style.count}>{`You have ${todos.length} todos`}</p>
+          <p className={style.count}>{`Created Todos: ${todos.length}`}</p>
         )}
       </div>
     </div>
