@@ -15,8 +15,6 @@ const style = {
 };
 
 const Todo = ({ todo, toggleComplete, deleteTodo }) => {
-
-
   return (
     <li className={todo.completed ? style.liComplete : style.li}>
       <div className={style.row}>
@@ -26,14 +24,21 @@ const Todo = ({ todo, toggleComplete, deleteTodo }) => {
           checked={todo.completed ? 'checked' : ''}
           className="cursor-pointer"
         />
-         <div className="">
-             <p onClick={() => toggleComplete(todo)} className={todo.completed ? style.textComplete : style.text}>
-              {todo.desc}
-                     </p>
-             <p onClick={() => toggleComplete(todo)} className={todo.completed ? style.textComplete2 : style.text2}>
-              {todo.desc}
-                     </p>
-         </div>
+        <div className="">
+          <p
+            onClick={() => toggleComplete(todo)}
+            className={todo.completed ? style.textComplete : style.text}
+          >
+            {todo.title}
+          </p>
+          <p
+            onClick={() => toggleComplete(todo)}
+            className={todo.completed ? style.textComplete2 : style.text2}
+          >
+            {todo.desc}
+          </p>
+          <p className={style.text2}>{todo.date}</p>
+        </div>
       </div>
       <div className={style.buttonContainer}>
         <span onClick={() => deleteTodo(todo.id)} className="cursor-pointer">
