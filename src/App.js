@@ -12,6 +12,7 @@ import {
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
 import Spinner from './components/Spinner';
+import SortMenu from './components/SortMenu';
 
 //   bg: `h-screen w-screen p-4 bg-gradient-to-r from-[#2F80ED] to-[#1CB5E0]`,
 // button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
@@ -46,13 +47,12 @@ function App() {
         todosArr.push({ ...doc.data(), id: doc.id });
       });
     //   const sortTodosArr = todosArr.sort((a, b) =>
-    //     a.date - b.date);
+    //     a.ide.localeCompare(b.ide)
+    //   );
 
-    const sortTodosArr = todosArr.sort((a, b) =>
-      a.date > b.date ? 1 : b.date > a.date ? -1 : 0
-    );
+      // const sortTodosArr = todosArr.sort();
 
-      setTodos(sortTodosArr);
+      setTodos(todosArr);
       setShowSpinner(false);
     });
     return () => unsubscribe();
@@ -111,6 +111,7 @@ function App() {
         <h3 className="text-[30px] font-bold my-[10px] flex justify-center">
           Todo Lists
         </h3>
+        <SortMenu />
         <div className={style.container3}>
           <ul>
             {showSpinner && <Spinner fillColor="#db6345" />}

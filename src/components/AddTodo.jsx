@@ -31,13 +31,22 @@ const AddTodo = ({ setShowError }) => {
     let time =
       times.getHours() + ':' + times.getMinutes() + ':' + times.getSeconds();
 
-    const update = date + " " + time
-    
+    const update = date + ' ' + time;
+
+    const update2 =
+      dates.getDate() +
+      dates.getMonth() +
+      dates.getFullYear() +
+      times.getHours() +
+      times.getMinutes() +
+      times.getSeconds();
+
     await addDoc(collection(db, 'todos'), {
       title: input,
       desc: input2,
       completed: false,
       date: update,
+      ide: update2
     });
 
     setInput('');
