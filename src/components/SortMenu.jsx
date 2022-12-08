@@ -4,16 +4,16 @@ import { AiOutlineSortDescending } from 'react-icons/ai';
 
 const SortMenu = ({ sortTitleAsc, sortTitleDes, sortDateAsc, sortDateDes }) => {
   return (
-    <div className="flex justify-between font-bold w-full">
+    <div className="flex justify-between font-bold w-full mb-[15px]">
 
         {/* Title menu */}
       <div className="flex items-center">
-        <p className="mr-[10px] text-[13px]">Title</p>
+        <p className="mr-[15px] text-[13px]">Title</p>
         <button
           onClick={() => {
             sortTitleAsc();
           }}
-          className="text-[20px] cursor-pointer mr-[10px]"
+          className="text-[20px] cursor-pointer mr-[15px]"
         >
           <AiOutlineSortAscending />
         </button>
@@ -26,12 +26,12 @@ const SortMenu = ({ sortTitleAsc, sortTitleDes, sortDateAsc, sortDateDes }) => {
 
       {/* Date menu */}
       <div className="flex items-center">
-        <p className="mr-[10px] text-[13px]">Date</p>
+        <p className="mr-[15px] text-[13px]">Date</p>
         <button
           onClick={() => {
             sortDateAsc();
           }}
-          className="text-[20px] cursor-pointer mr-[10px]"
+          className="text-[20px] cursor-pointer mr-[15px]"
         >
           <AiOutlineSortAscending />
         </button>
