@@ -7,7 +7,8 @@ const style = {
   liComplete: `flex justify-between items-center bg-slate-400 p-4 my-2 capitalize`,
   row: `flex`,
   text: `ml-[10px] cursor-pointer font-bold`,
-  text2: `ml-[10px] cursor-pointer`,
+  text2: `ml-[10px] cursor-pointer font-semibold`,
+  text3: `ml-[10px] text-[14px] cursor-pointer`,
   textComplete: `ml-[10px] cursor-pointer line-through font-bold`,
   textComplete2: `ml-[10px] cursor-pointer line-through`,
   button: `cursor-pointer flex items-center`,
@@ -37,7 +38,7 @@ const Todo = ({ todo, toggleComplete, deleteTodo }) => {
           >
             {todo.desc}
           </p>
-          <p className={style.text2}>{todo.date}</p>
+          <p className={style.text3}>{todo.date}</p>
         </div>
       </div>
       <div className={style.buttonContainer}>
