@@ -50,28 +50,28 @@ function App() {
       });
 
       const newArray = [...todosArr].sort((a, b) =>
-          b.date.localeCompare(a.date)
-        );
+        b.date.localeCompare(a.date)
+      );
       //   const sortTodosArr = todosArr.sort((a, b) =>
       //     a.title.localeCompare(b.title)
       //   );
 
-    //   const sortTodosArr = todosArr.reverse();
+      //   const sortTodosArr = todosArr.reverse();
 
-      setTodos(newArray);
+      setTodos([...newArray]);
       setShowSpinner(false);
     });
     return () => unsubscribe();
   }, []);
 
-//   const newTodo = todos.sort((a, b) => a.title.localeCompare(b.title));
+  //   const newTodo = todos.sort((a, b) => a.title.localeCompare(b.title));
 
   //   const newTodo = todos.sort((a, b) =>
   //     a.title > b.title ? 1 : b.title > a.title ? -1 : 0
   //   );
-//   const newTodo2 = newTodo.reverse();
+  //   const newTodo2 = newTodo.reverse();
 
-//   console.log(todos);
+  //   console.log(todos);
   console.log(flip);
 
   // Update todo in firebase
@@ -91,10 +91,34 @@ function App() {
     await deleteDoc(doc(db, 'todos', id));
   };
 
-  const sortTodos = () => {
+  console.log(todos);
+  console.log(flip);
+
+  //   sorting functions
+
+  // ascending title sort
+  const sortTitleAsc = () => {
+    todos.sort((a, b) => a.title.localeCompare(b.title));
     setFlip(!flip);
   };
-  //
+
+  //  descending title sort
+  const sortTitleDes = () => {
+    todos.sort((a, b) => b.title.localeCompare(a.title));
+    setFlip(!flip);
+  };
+
+  // ascending date sort
+  const sortDateAsc = () => {
+    todos.sort((a, b) => a.date.localeCompare(b.date));
+    setFlip(!flip);
+  };
+
+  // descending date sort
+  const sortDateDes = () => {
+    todos.sort((a, b) => b.date.localeCompare(a.date));
+    setFlip(!flip);
+  };
 
   return (
     <div className={style.bg}>
@@ -123,7 +147,12 @@ function App() {
         <h3 className="text-[30px] font-bold my-[10px] flex justify-center">
           Todo Lists
         </h3>
-        <SortMenu sortTodos={sortTodos} />
+        <SortMenu
+          sortTitleAsc={sortTitleAsc}
+          sortTitleDes={sortTitleDes}
+          sortDateAsc={sortDateAsc}
+          sortDateDes={sortDateDes}
+        />
         <div className={style.container3}>
           <ul>
             {showSpinner && <Spinner fillColor="#db6345" />}
