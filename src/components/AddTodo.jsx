@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlinePlus } from 'react-icons/ai';
 import { db } from '../util/firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import SpinnerButton from './SpinnerButton';
 
 const style = {
   form: `flex flex-col w-full gap-y-[17px] mt-[20px] justify-between`,
@@ -14,7 +12,6 @@ const style = {
 const AddTodo = ({ setShowError }) => {
   const [input, setInput] = useState('');
   const [input2, setInput2] = useState('');
-  const [toggle, setToggle] = useState(false);
 
   // Create todo
   const createTodo = async (e) => {

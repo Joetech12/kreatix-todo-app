@@ -6,16 +6,12 @@ import {
   onSnapshot,
   updateDoc,
   doc,
-  addDoc,
   deleteDoc,
 } from 'firebase/firestore';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
 import Spinner from './components/Spinner';
 import SortMenu from './components/SortMenu';
-
-//   bg: `h-screen w-screen p-4 bg-gradient-to-r from-[#2F80ED] to-[#1CB5E0]`,
-// button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
 
 const style = {
   bg: `md:h-screen md:w-screen bg-[#707070] to-[#1CB5E0] flex justify-center items-center flex-col md:flex-row md:space-x-[20px]`,
@@ -31,6 +27,7 @@ const style = {
 };
 
 function App() {
+  // Usestates
   const [todos, setTodos] = useState([]);
 
   const [showError, setShowError] = useState(false);
@@ -52,11 +49,6 @@ function App() {
       const newArray = [...todosArr].sort((a, b) =>
         b.date.localeCompare(a.date)
       );
-      //   const sortTodosArr = todosArr.sort((a, b) =>
-      //     a.title.localeCompare(b.title)
-      //   );
-
-      //   const sortTodosArr = todosArr.reverse();
 
       setTodos([...newArray]);
       setShowSpinner(false);
@@ -64,14 +56,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  //   const newTodo = todos.sort((a, b) => a.title.localeCompare(b.title));
-
-  //   const newTodo = todos.sort((a, b) =>
-  //     a.title > b.title ? 1 : b.title > a.title ? -1 : 0
-  //   );
-  //   const newTodo2 = newTodo.reverse();
-
-  //   console.log(todos);
   console.log(flip);
 
   // Update todo in firebase

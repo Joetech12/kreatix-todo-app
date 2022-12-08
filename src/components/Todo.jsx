@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
+// import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 const style = {
   li: `flex justify-between items-center bg-slate-200 p-4 my-2 capitalize`,
