@@ -37,6 +37,8 @@ function App() {
 
   const [showSpinner, setShowSpinner] = useState(false);
 
+  const [flip, setFlip] = useState(true);
+
   // Read todo from firebase
   useEffect(() => {
     setShowSpinner(true);
@@ -46,26 +48,31 @@ function App() {
       querySnapshot.forEach((doc) => {
         todosArr.push({ ...doc.data(), id: doc.id });
       });
-    //   const sortTodosArr = todosArr.sort((a, b) =>
-    //     a.ide.localeCompare(b.ide)
-    //   );
 
-      // const sortTodosArr = todosArr.sort();
+      const newArray = [...todosArr].sort((a, b) =>
+          b.date.localeCompare(a.date)
+        );
+      //   const sortTodosArr = todosArr.sort((a, b) =>
+      //     a.title.localeCompare(b.title)
+      //   );
 
-      setTodos(todosArr);
+    //   const sortTodosArr = todosArr.reverse();
+
+      setTodos(newArray);
       setShowSpinner(false);
     });
     return () => unsubscribe();
   }, []);
 
-  const newTodo = todos.sort((a, b) => a.title.localeCompare(b.title));
+//   const newTodo = todos.sort((a, b) => a.title.localeCompare(b.title));
 
   //   const newTodo = todos.sort((a, b) =>
   //     a.title > b.title ? 1 : b.title > a.title ? -1 : 0
   //   );
-  const newTodo2 = newTodo.reverse();
+//   const newTodo2 = newTodo.reverse();
 
-  console.log(todos);
+//   console.log(todos);
+  console.log(flip);
 
   // Update todo in firebase
   const toggleComplete = async (todo) => {
@@ -83,6 +90,11 @@ function App() {
   const deleteTodo = async (id) => {
     await deleteDoc(doc(db, 'todos', id));
   };
+
+  const sortTodos = () => {
+    setFlip(!flip);
+  };
+  //
 
   return (
     <div className={style.bg}>
@@ -111,7 +123,7 @@ function App() {
         <h3 className="text-[30px] font-bold my-[10px] flex justify-center">
           Todo Lists
         </h3>
-        <SortMenu />
+        <SortMenu sortTodos={sortTodos} />
         <div className={style.container3}>
           <ul>
             {showSpinner && <Spinner fillColor="#db6345" />}
