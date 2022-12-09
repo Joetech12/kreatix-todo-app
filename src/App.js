@@ -24,6 +24,11 @@ const style = {
   input: `border p-2 w-full text-xl hover:border-red-300 hover:border-[1px] focus:ring focus:ring-red-300 focus:ring-[2px] outline-none rounded-lg`,
   button: `border p-4 ml-2 bg-[#db6345] hover:bg-[#ba4021] text-slate-100 rounded-lg duration-300`,
   count: `text-center p-2 font-semibold`,
+  container2div: `flex flex-col items-center`,
+  errorDiv: `flex justify-center w-full bg-red-100 py-4 my-2`,
+  footerDiv: `text-[14px] mt-[30px] hidden md:block`,
+  rightFooter: `text-[14px] mt-[30px] hidden md:block`,
+  todoListTitle: `text-[30px] font-bold my-[10px] flex justify-center`,
 };
 
 function App() {
@@ -111,7 +116,7 @@ function App() {
       {/* left login section */}
       <div className={style.containerLeft}>
         <div className={style.container2}>
-          <div className="flex flex-col items-center">
+          <div className={style.container2div}>
             <img src="/logo2.png" alt="" width="100px" />
             <h3 className={style.heading}>Kreatix Todo App</h3>
             <h3 className="">Version 1.1.5</h3>
@@ -123,21 +128,17 @@ function App() {
             setToggleSpinner={setToggleSpinner}
           />
           {showError && (
-            <div className="flex justify-center w-full bg-red-100 py-4 my-2">
+            <div className={style.errorDiv}>
               <p className="">Please add Todo Title</p>
             </div>
           )}
-          <p className="text-[14px] mt-[30px] hidden md:block">
-            © Kreatix Technologies - 2022
-          </p>
+          <p className={style.rightFooter}>© Kreatix Technologies - 2022</p>
         </div>
       </div>
 
       {/* Right Todo section */}
       <div className={style.containerRight}>
-        <h3 className="text-[30px] font-bold my-[10px] flex justify-center">
-          Todo Lists
-        </h3>
+        <h3 className={style.todoListTitle}>Todo Lists</h3>
         <SortMenu
           sortTitleAsc={sortTitleAsc}
           sortTitleDes={sortTitleDes}
@@ -163,9 +164,7 @@ function App() {
           <p className={style.count}>{`Created Todos: ${todos.length}`}</p>
         )}
 
-        <p className="text-[14px] mt-[30px] md:hidden w-full flex justify-center">
-          © Kreatix Technologies - 2022
-        </p>
+        <p className={style.footerDiv}>© Kreatix Technologies - 2022</p>
       </div>
     </div>
   );
