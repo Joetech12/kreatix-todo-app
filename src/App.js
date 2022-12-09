@@ -26,9 +26,9 @@ const style = {
   count: `text-center p-2 font-semibold`,
   container2div: `flex flex-col items-center`,
   errorDiv: `flex justify-center w-full bg-red-100 py-4 my-2`,
-  footerDiv: `text-[14px] mt-[30px] hidden md:block`,
-  rightFooter: `text-[14px] mt-[30px] hidden md:block`,
-  todoListTitle: `text-[30px] font-bold my-[10px] flex justify-center`,
+  footerText: `text-[14px] mt-[30px] hidden md:block`,
+  footerText2: `text-[14px] mt-[30px] md:hidden w-full flex justify-center`,
+  todoListHeader: `text-[30px] font-bold my-[10px] flex justify-center`,
 };
 
 function App() {
@@ -132,13 +132,13 @@ function App() {
               <p className="">Please add Todo Title</p>
             </div>
           )}
-          <p className={style.rightFooter}>© Kreatix Technologies - 2022</p>
+          <p className={style.footerText}>© Kreatix Technologies - 2022</p>
         </div>
       </div>
 
       {/* Right Todo section */}
       <div className={style.containerRight}>
-        <h3 className={style.todoListTitle}>Todo Lists</h3>
+        <h3 className={style.todoListHeader}>Todo Lists</h3>
         <SortMenu
           sortTitleAsc={sortTitleAsc}
           sortTitleDes={sortTitleDes}
@@ -164,7 +164,7 @@ function App() {
           <p className={style.count}>{`Created Todos: ${todos.length}`}</p>
         )}
 
-        <p className={style.footerDiv}>© Kreatix Technologies - 2022</p>
+        <p className={style.footerText2}>© Kreatix Technologies - 2022</p>
       </div>
     </div>
   );
