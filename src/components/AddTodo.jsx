@@ -6,7 +6,7 @@ import SpinnerButton from './SpinnerButton';
 const style = {
   form: `flex flex-col w-full gap-y-[17px] mt-[20px] justify-between`,
   input: `border p-2 w-full text-[16px] hover:border-red-300 hover:border-[1px] focus:ring focus:ring-red-300 focus:ring-[2px] outline-none rounded-lg`,
-  button: `border p-2 flex justify-center bg-[#db6345] hover:bg-[#ba4021] text-slate-100 rounded-lg duration-300`,
+  button: `border p-2 flex justify-center bg-[#db6345] hover:bg-[#ba4021] text-slate-100 rounded-lg duration-300 focus:ring focus:ring-red-300 focus:ring-[2px] outline-none`,
   buttonText: `font-semibold`,
 };
 
