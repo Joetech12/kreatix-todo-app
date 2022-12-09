@@ -16,7 +16,7 @@ import SortMenu from './components/SortMenu';
 const style = {
   bg: `md:h-screen md:w-screen bg-[#707070] to-[#1CB5E0] flex justify-center items-center flex-col md:flex-row md:space-x-[20px]`,
   containerLeft: `bg-slate-100 max-w-[500px] w-full rounded-lg shadow-xl p-4 md:max-h-screen flex flex-col my-[0.2rem]`,
-  containerRight: `bg-slate-100 max-w-[500px] w-full rounded-lg shadow-xl px-4 py-4 flex flex-col my-[0.2rem] md:my-[5rem] md:h-full md:my-[5rem] `,
+  containerRight: `bg-slate-100 max-w-[500px] w-full rounded-lg shadow-xl px-4 h-[800px] py-4 flex flex-col my-[0.2rem] md:my-[5rem] md:h-full md:my-[5rem] `,
   container2: `flex flex-col items-center justify-center h-full px-[20px]`,
   container3: `overflow-auto grow`,
   heading: `text-3xl font-bold text-center text-gray-800 p-2`,
