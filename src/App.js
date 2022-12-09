@@ -36,6 +36,8 @@ function App() {
 
   const [flip, setFlip] = useState(true);
 
+  const [toggleSpinner, setToggleSpinner] = useState(false);
+
   // Read todo from firebase
   useEffect(() => {
     setShowSpinner(true);
@@ -114,7 +116,11 @@ function App() {
             <h3 className={style.heading}>Kreatix Todo App</h3>
             <h3 className="">Version 1.1.5</h3>
           </div>
-          <AddTodo setShowError={setShowError} />
+          <AddTodo
+            setShowError={setShowError}
+            toggleSpinner={toggleSpinner}
+            setToggleSpinner={setToggleSpinner}
+          />
           {showError && (
             <div className="flex justify-center w-full bg-red-100 py-4 my-2">
               <p className="">Please add Todo Title</p>

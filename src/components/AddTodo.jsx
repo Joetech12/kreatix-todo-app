@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../util/firebase';
 import { collection, addDoc } from 'firebase/firestore';
+import SpinnerButton from './SpinnerButton';
 
 const style = {
   form: `flex flex-col w-full gap-y-[17px] mt-[20px] justify-between`,
@@ -9,9 +10,23 @@ const style = {
   buttonText: `font-semibold`,
 };
 
-const AddTodo = ({ setShowError }) => {
+const AddTodo = ({ setShowError, toggleSpinner, setToggleSpinner }) => {
   const [input, setInput] = useState('');
   const [input2, setInput2] = useState('');
+  const [showButtonText, setShowButtonText] = useState(true);
+
+  const showSpinner = () => {
+    // setTimeout(() => {
+    //   setToggleSpinner(true);
+    //   setShowButtonText(false);
+    // }, 500);
+    // setTimeout(() => {
+    //   setToggleSpinner(false);
+    //   setShowButtonText(true);
+    // }, 1600);
+    setToggleSpinner(true);
+    setShowButtonText(false);
+  };
 
   // Create todo
   const createTodo = async (e) => {
@@ -36,7 +51,8 @@ const AddTodo = ({ setShowError }) => {
       completed: false,
       date: update,
     });
-
+    setToggleSpinner(false);
+    setShowButtonText(true);
     setInput('');
     setInput2('');
   };
@@ -64,10 +80,15 @@ const AddTodo = ({ setShowError }) => {
         placeholder="Todo Description"
       />
 
-      <button className={style.button}>
+      <button
+        className={style.button}
+        onClick={() => {
+          showSpinner();
+        }}
+      >
         {/* <AiOutlinePlus size={30} /> */}
-        <span>{/* <SpinnerButton /> */}</span>
-        <p className={style.buttonText}>Add Todo</p>
+        <span>{toggleSpinner && <SpinnerButton />}</span>
+        {showButtonText && <p className={style.buttonText}>Add Todo</p>}
       </button>
     </form>
   );
