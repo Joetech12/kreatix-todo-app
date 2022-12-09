@@ -117,6 +117,7 @@ function App() {
             <h3 className="">Version 1.1.5</h3>
           </div>
           <AddTodo
+            showError={showError}
             setShowError={setShowError}
             toggleSpinner={toggleSpinner}
             setToggleSpinner={setToggleSpinner}

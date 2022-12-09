@@ -10,7 +10,12 @@ const style = {
   buttonText: `font-semibold`,
 };
 
-const AddTodo = ({ setShowError, toggleSpinner, setToggleSpinner }) => {
+const AddTodo = ({
+  setShowError,
+  toggleSpinner,
+  setToggleSpinner,
+  showError,
+}) => {
   const [input, setInput] = useState('');
   const [input2, setInput2] = useState('');
   const [showButtonText, setShowButtonText] = useState(true);
@@ -83,7 +88,10 @@ const AddTodo = ({ setShowError, toggleSpinner, setToggleSpinner }) => {
       <button
         className={style.button}
         onClick={() => {
-          showSpinner();
+          if (input !== '') {
+            showSpinner();
+            return;
+          }
         }}
       >
         {/* <AiOutlinePlus size={30} /> */}
