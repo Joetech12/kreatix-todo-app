@@ -40,13 +40,31 @@ const AddTodo = ({
       setShowError(true);
       return;
     }
-    let dates = new Date();
-    let date =
-      dates.getDate() + '/' + dates.getMonth() + '/' + dates.getFullYear();
+    // let dates = new Date();
+    // let date =
+    //   dates.getDate() + '/' + dates.getMonth() + '/' + dates.getFullYear();
+
+    const addZero = (i) => {
+      if (i < 10) {
+        i = '0' + i;
+      }
+      return i;
+    };
 
     let times = new Date();
     let time =
-      times.getHours() + ':' + times.getMinutes() + ':' + times.getSeconds();
+      addZero(times.getHours()) +
+      ':' +
+      addZero(times.getMinutes()) +
+      ':' +
+      addZero(times.getSeconds());
+
+    let dates = new Date();
+    let date = dates.toLocaleDateString('en-GB', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
 
     const update = date + ' ' + time;
 
