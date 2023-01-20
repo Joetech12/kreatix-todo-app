@@ -26,7 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig, 'appCheck');
 export const db = getFirestore(app);
 
 // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
