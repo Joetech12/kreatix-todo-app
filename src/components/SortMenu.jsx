@@ -8,6 +8,7 @@ const SortMenu = ({ sortTitleAsc, sortTitleDes, sortDateAsc, sortDateDes }) => {
 
         {/* Title menu */}
       <div className="flex items-center">
+        <span className="material-icons text-red-300">school</span>
         <p className="mr-[10px] text-[13px]">Title</p>
         <button
           onClick={() => {

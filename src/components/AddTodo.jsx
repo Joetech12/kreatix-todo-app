@@ -44,6 +44,7 @@ const AddTodo = ({
     // let date =
     //   dates.getDate() + '/' + dates.getMonth() + '/' + dates.getFullYear();
 
+    //Create time and Date formats
     const addZero = (i) => {
       if (i < 10) {
         i = '0' + i;
