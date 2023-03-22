@@ -132,7 +132,7 @@ function App() {
               <p className="">Please add Todo Title</p>
             </div>
           )}
-          <p className={style.footerText}>© Kreatix Technologies - 2022</p>
+          <p className={style.footerText}>© Ifeanyi Umeh - 2022</p>
         </div>
       </div>
 
@@ -164,7 +164,7 @@ function App() {
           <p className={style.count}>{`Created Todos: ${todos.length}`}</p>
         )}
 
-        <p className={style.footerText2}>© Kreatix Technologies - 2022</p>
+        <p className={style.footerText2}>© Ifeanyi Umeh - 2022</p>
       </div>
     </div>
   );
