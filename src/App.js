@@ -63,7 +63,7 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  console.log(flip);
+//   console.log(flip);
 
   // Update todo in firebase
   const toggleComplete = async (todo) => {
@@ -82,8 +82,8 @@ function App() {
     await deleteDoc(doc(db, 'todos', id));
   };
 
-  console.log(todos);
-  console.log(flip);
+//   console.log(todos);
+//   console.log(flip);
 
   //   sorting functions
 
@@ -129,7 +129,7 @@ function App() {
           />
           {showError && (
             <div className={style.errorDiv}>
-              <p className="">Please add Todo Title</p>
+              <p className="text-[#ba4021]">Please add Todo Title</p>
             </div>
           )}
           <p className={style.footerText}>© Ifeanyi Umeh - 2022</p>

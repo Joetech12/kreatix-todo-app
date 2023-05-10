@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../util/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import SpinnerButton from './SpinnerButton';
+import { parseISO, formatDistanceToNow } from 'date-fns';
 
 const style = {
   form: `flex flex-col w-full gap-y-[17px] mt-[20px] justify-between`,
@@ -61,11 +62,19 @@ const AddTodo = ({
       addZero(times.getSeconds());
 
     let dates = new Date();
+
     let date = dates.toLocaleDateString('en-GB', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
     });
+
+    // let dates2 = new Date().toISOString();
+    // const datess = parseISO(dates2);
+    // const timePeriod = formatDistanceToNow(datess);
+    // let timeAgo = `${timePeriod} ago`;
+
+    // console.log(timeAgo);
 
     const update = date + ' ' + time;
 
@@ -73,6 +82,7 @@ const AddTodo = ({
       title: input,
       desc: input2,
       completed: false,
+      //   date: timeAgo,
       date: update,
     });
     setToggleSpinner(false);
